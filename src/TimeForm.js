@@ -44,8 +44,8 @@ const useStyles = makeStyles((theme) => ({
         color: "#555",
         cursor: "pointer",
         "&:hover": {
-            background: "green",
-            color: "#fff"
+            background: theme.palette.primary.light,
+            // color: "#fff"
           },
       },
 
@@ -59,8 +59,8 @@ const useStyles = makeStyles((theme) => ({
       },
 
       boxSelected: {
-        backgroundColor: "green",
-        border: "1px solid #999",
+        backgroundColor: theme.palette.primary.main,
+        border: `1px solid ${theme.palette.primary.main}`,
         margin: "5px",
         padding: "5px",
         color: "#fff",
@@ -72,9 +72,16 @@ const useStyles = makeStyles((theme) => ({
         border: "1px solid #ddd",
         margin: "5px",
         padding: "5px",
-        color: "#fff"
+        color: "#ddd",
+        cursor: "not-allowed"
         
       },
+
+      title: {
+        color : theme.palette.primary.main,
+        marginBottom: "20px",
+        fontWeight: "500"
+      }
 
   }));
 
@@ -197,7 +204,7 @@ export default function TimeForm() {
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom className={classes.title}>
         Pick a Time
       </Typography>
 

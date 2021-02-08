@@ -131,11 +131,11 @@ const useStyles = makeStyles((theme) => ({
   faqButton: {
     marginBottom : "20px",
     marginLeft : "10px",
-    backgroundColor : "#2f942e",
-    "&:hover": {
-      background: "green",
-      color: "#fff"
-    },
+    // backgroundColor : "#2f942e",
+    // "&:hover": {
+    //   background: "green",
+    //   color: "#fff"
+    // },
     textDecoration : "none !important",
     width: "115px"
 
@@ -148,7 +148,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const steps = ['Appoinment Date', 'Appoinment Time', 'Basic Info', 'Address Info','Review'];
+const steps = ['Appoinment Date', 'Appoinment Time', 'Basic Info', 'Review'];
 
 function getStepContent(step) {
   switch (step) {
@@ -159,8 +159,6 @@ function getStepContent(step) {
     case 2:
       return <InformationForm />;
     case 3:
-      return <AddressForm />;
-    case 4:
         return <ReviewForm />;
     default:
       throw new Error('Unknown step');
@@ -260,32 +258,16 @@ export default function Checkout() {
         referrer = '/'
       }
 
-      if (!state.proceedToSubmit)
-      {
         const personInfo = {
-          gender: state.gender,
-          title: state.title,
-          firstname: state.firstname,
-          lastname: state.lastname,
-          birthDate: state.birthDate,
+          fullname: state.fullname,
           email: state.email,
           phone: state.phone,
-          postCode: state.postCode,
-          address: state.address,
           notes: state.notes,
-          certificate: state.certificate,
-          passportNumber: state.passportNumber,
-          passportNumber2: state.passportNumber2,
-          antiBodyTest: state.antiBodyTest ?? false
         };
     
         const promise = BookService.bookAppointment({...personInfo, bookingDate:  dateformat(new Date(state.bookingDate.toUTCString().slice(0, -4)),'yyyy-mm-dd'), bookingTime: state.bookingTime, bookingRef: ref, referrer: referrer });
         promiseArray.push(promise);
-      }
   
-      for (var i=0 ; i < state.persons?.length; i++){
-        promiseArray.push(BookService.bookAppointment({...state.persons[i],bookingDate: dateformat(new Date(state.bookingDate.toUTCString().slice(0, -4)),'yyyy-mm-dd'), bookingTime: state.bookingTime, bookingRef: ref, referrer: referrer}));
-      }
       
       Promise.all(promiseArray).then( (values) => {
 
@@ -316,13 +298,13 @@ export default function Checkout() {
 
   const handleNext = () => {
 
-    if (state.activeStep === 4)
+    if (state.activeStep === 3)
     {
-      if (!state.dataConfirmed)
-      {
-        setState(state => ({...state, dataConfirmedError : true }));
-        return;
-      }
+      // if (!state.dataConfirmed)
+      // {
+      //   setState(state => ({...state, dataConfirmedError : true }));
+      //   return;
+      // }
   
 
       setSubmiting(true);
@@ -370,11 +352,11 @@ export default function Checkout() {
       <main className={classes.layout}>
         <Paper className={classes.paper}>
 
-
+        {state.activeStep <= 3 && (
           <Typography component="h1" variant="h6" align="center">
                 Book Appointment Online
           </Typography>
-
+        )}
       
 
           <React.Fragment>
@@ -492,11 +474,17 @@ export default function Checkout() {
                             tabIndex={-1}
                           >
                             <div style={{textAlign:"justify", padding:"10px"}}>
-                              Medical Express Clinic will not contact you for any other reason than to share your test results, and certificate if selected, via the email address provided. The information provided to us via this registration form is never shared with any other organisations, except when this is required by law. 
-
-                                Information provided will never be used for marketing purposes, you cannot opt in.
-
-                                In the case of a positive swab result, our doctor will call on the telephone number provided to inform you of your result and provide additional advice or guidance.
+                            Medical Express Clinic will not contact you for any other reason
+                than to share your test results, and certificate if selected,
+                via the email address provided. The information provided to us
+                via this registration form is never shared with any other
+                organisations, except when this is required by law. Information
+                provided will never be used for marketing purposes, you cannot
+                opt in. In the case of a notable health result, our doctor will
+                call on the telephone number provided to inform you of your
+                result and provide additional advice or guidance. If we cannot
+                get hold of you, we will email you asking you to contact the
+                clinic.
                           </div>
                           </DialogContentText>
                         </DialogContent>

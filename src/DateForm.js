@@ -47,6 +47,12 @@ const useStyles = makeStyles((theme) => ({
 
   loadingBox: {
     
+  },
+
+  title: {
+    color : theme.palette.primary.main,
+    marginBottom: "20px",
+    fontWeight: "500"
   }
 
 }));
@@ -154,7 +160,7 @@ export default function DateForm() {
 
     <React.Fragment>
                
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h6" gutterBottom className={classes.title}>
                     Pick a Date
                 </Typography>
 

@@ -23,6 +23,7 @@ import AirplanemodeActiveIcon from '@material-ui/icons/AirplanemodeActive';
 import { Grid } from '@material-ui/core';
 
 import logoImage from './images/logo.png';
+import doctorImage from './images/doctor.png';
 
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import faq from './FAQ';
@@ -73,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(2),
       marginBottom: theme.spacing(2),
-      padding: theme.spacing(3),
+      padding: theme.spacing(2),
     },
   },
   stepper: {
@@ -103,7 +104,12 @@ const useStyles = makeStyles((theme) => ({
     width: "40px",
     height: "40px",
     marginLeft: "0px",
-    
+  },
+
+  doctorImage: {
+    width: "40px",
+    height: "40px",
+    marginRight: "10px",
   },
 
   privacyButton: {
@@ -114,11 +120,11 @@ const useStyles = makeStyles((theme) => ({
   faqButton: {
     marginBottom : "20px",
     marginLeft : "10px",
-    backgroundColor : "#2f942e",
-    "&:hover": {
-      background: "green",
-      color: "#fff"
-    },
+    // backgroundColor : "#2f942e",
+    // "&:hover": {
+    //   background: "green",
+    //   color: "#fff"
+    // },
     textDecoration : "none !important",
     width: "115px"
 
@@ -127,7 +133,7 @@ const useStyles = makeStyles((theme) => ({
   textContent : {
       color : "#666f77",
       fontSize : "1.1rem",
-      textAlign: "justify",
+      textAlign: "left",
       paddingLeft: "30px",
       paddingRight: "30px",
       lineHeight: "2.2em",
@@ -137,7 +143,7 @@ const useStyles = makeStyles((theme) => ({
   textContentMobile : {
     color : "#666f77",
     fontSize : "0.9rem",
-    textAlign: "justify",
+    textAlign: "left",
     paddingLeft: "30px",
     paddingRight: "30px",
     lineHeight: "2.2em",
@@ -153,6 +159,11 @@ const useStyles = makeStyles((theme) => ({
   AirIcon : {
       marginRight : "10px",
       fontSize: "32px"
+  },
+
+  pageTitle:{
+    color : theme.palette.primary.main,
+    marginTop : "10px"
   }
 
 }));
@@ -277,11 +288,16 @@ const getStartedClicked = (event) => {
                 justifyContent: "center",
               }}
             >
-              <AirplanemodeActiveIcon
-                className={classes.AirIcon}
-                color="primary"
+
+              <img
+                className={classes.doctorImage}
+                src={doctorImage}
+                alt="doctor image"
               />
-              RT-PCR Fit to Fly Test - £199
+              
+              <span className={classes.pageTitle}> 
+                  Private GP in London - £150
+              </span>
             </div>
           </Typography>
 
@@ -290,7 +306,7 @@ const getStartedClicked = (event) => {
               isMobile ? classes.textContentMobile : classes.textContent
             }
           >
-            Universally accepted for international travel to all destinations.
+            -&nbsp; Flexible appointment for private GP services whenever you need.
           </p>
 
           <p
@@ -298,8 +314,7 @@ const getStartedClicked = (event) => {
               isMobile ? classes.textContentMobile : classes.textContent
             }
           >
-            Nasopharyngeal swab sample taken from the back of the nose and
-            throat.
+            -&nbsp; Highly Experienced Doctors.
           </p>
 
           <p
@@ -307,7 +322,7 @@ const getStartedClicked = (event) => {
               isMobile ? classes.textContentMobile : classes.textContent
             }
           >
-            COVID-19 PCR test to detect viral RNA.
+             -&nbsp; We are open seven days a week.
           </p>
 
           <p
@@ -315,8 +330,7 @@ const getStartedClicked = (event) => {
               isMobile ? classes.textContentMobile : classes.textContent
             }
           >
-            Guaranteed results within 48 hours - over 90% of our results return
-            before 24 hours of clinic appointment.
+             -&nbsp; No card details or payment necessary.
           </p>
 
           <p
@@ -324,25 +338,8 @@ const getStartedClicked = (event) => {
               isMobile ? classes.textContentMobile : classes.textContent
             }
           >
-            Secure, verifiable results sent in PDF format via email, hard copies
-            available to collect.
-          </p>
-
-          <p
-            className={
-              isMobile ? classes.textContentMobile : classes.textContent
-            }
-          >
-            No card details or payment necessary.
-          </p>
-
-          <p
-            className={
-              isMobile ? classes.textContentMobile : classes.textContent
-            }
-          >
-            Plans change and you may need to cancel or rearrange your
-            appointment. We take payment for your test only when you attend the
+             -&nbsp; Plans change and you may need to cancel or rearrange your
+            appointment. We take payment for your visit only when you attend the
             clinic.
           </p>
 
@@ -395,15 +392,17 @@ const getStartedClicked = (event) => {
               tabIndex={-1}
             >
               <div style={{ textAlign: "justify", padding: "10px" }}>
-                Medical Express Clinic will not contact you for any other reason
+              Medical Express Clinic will not contact you for any other reason
                 than to share your test results, and certificate if selected,
                 via the email address provided. The information provided to us
                 via this registration form is never shared with any other
                 organisations, except when this is required by law. Information
                 provided will never be used for marketing purposes, you cannot
-                opt in. In the case of a positive swab result, our doctor will
+                opt in. In the case of a notable health result, our doctor will
                 call on the telephone number provided to inform you of your
-                result and provide additional advice or guidance.
+                result and provide additional advice or guidance. If we cannot
+                get hold of you, we will email you asking you to contact the
+                clinic.
               </div>
             </DialogContentText>
           </DialogContent>

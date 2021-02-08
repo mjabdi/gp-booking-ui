@@ -23,29 +23,9 @@ export default function ValidateStep (state,setState, step)
       }
     } else if (step === 2){
       ///validate Basic Info
-      if (!state.gender)
+      if (!state.fullname || state.fullname.trim().length < 1)
       {
-        setState(state => ({...state, genderError : true}));
-        error = true;
-      }
-      if (!state.title)
-      {
-        setState(state => ({...state, titleError : true}));
-        error = true;
-      }
-      if (!state.firstname || state.firstname.trim().length < 1)
-      {
-        setState(state => ({...state, firstnameError : true}));
-        error = true;
-      }
-      if (!state.lastname || state.lastname.trim().length < 1)
-      {
-        setState(state => ({...state, lastnameError : true}));
-        error = true;
-      }
-      if (!state.birthDate || state.birthDate.length !== 10)
-      {
-        setState(state => ({...state, birthDateError : true}));
+        setState(state => ({...state, fullnameError : true}));
         error = true;
       }
       if (!state.email || !EmailValidator.validate(state.email))
@@ -60,44 +40,10 @@ export default function ValidateStep (state,setState, step)
         error = true;
       }
 
-      if (!state.emailConfirmed)
-      {
-        setState(state => ({...state, emailConfirmedError : true}));
-        error = true;
-      }
-
-      if (state.certificate && (!state.passportNumber || state.passportNumber.trim().length < 6))
-      {
-        setState(state => ({...state, passportNumberError : true}));
-        error = true;
-      }
-
-    }
-    else if (step === 3){
-      ///validate Address Info
-      if (!state.phone || state.phone.trim().length < 6)
+      if (!state.phone || state.phone.trim().length < 1)
       {
         setState(state => ({...state, phoneError : true}));
         error = true;
-      }
-      if (!state.postCode || state.postCode.trim().length < 5)
-      {
-        setState(state => ({...state, postCodeError : true}));
-        error = true;
-      }
-      if (!state.address || state.address.trim().length < 10)
-      {
-        setState(state => ({...state, addressError : true}));
-        error = true;
-      }    
-      // if (state.certificate && (!state.passportNumber || state.passportNumber.trim().length < 6))
-      // {
-      //   setState(state => ({...state, passportNumberError : true}));
-      //   error = true;
-      // }
-
-      if (!error){
-        setState(state => ({...state, proceedToSubmit: false}));
       }
     }
 

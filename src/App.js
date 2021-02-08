@@ -5,7 +5,8 @@ import AgreementForm from './AgreementForm';
 import GlobalState from './GlobalState'; 
 import React, { useEffect } from 'react';
 import BookService from './services/BookService';
-
+import theme from "./theme";
+import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
 
 const getPathId = () =>
 {
@@ -55,6 +56,9 @@ function App() {
 
   return (
     <GlobalState.Provider value={[state, setState]}>
+            <MuiThemeProvider theme={theme}>
+        <CssBaseline />
+
       <div className="App">
 
         {!state.getStarted && ( <WelcomeForm/> )}
@@ -63,6 +67,7 @@ function App() {
 
        
       </div>
+      </MuiThemeProvider>
     </GlobalState.Provider>
   );
 }

@@ -122,11 +122,11 @@ const useStyles = makeStyles((theme) => ({
   faqButton: {
     marginBottom : "20px",
     marginLeft : "10px",
-    backgroundColor : "#2f942e",
-    "&:hover": {
-      background: "green",
-      color: "#fff"
-    },
+    // backgroundColor : "#2f942e",
+    // "&:hover": {
+    //   background: "green",
+    //   color: "#fff"
+    // },
     textDecoration : "none !important",
     width: "115px"
 
@@ -257,7 +257,7 @@ export default function AgreementForm() {
 
 
 const getAgreeClicked = (event) => {
-    if (check.check1 && check.check2 && check.check3 && check.check4 && check.check5)
+    if (check.check1 && check.check2 && check.check3 && check.check4)
     {
         setState(state => ({...state, agreed: true}));
     }
@@ -268,7 +268,7 @@ const getAgreeClicked = (event) => {
 }
 
 useEffect( () => {
-  if (check.check1 && check.check2 && check.check3 && check.check4 && check.check5)
+  if (check.check1 && check.check2 && check.check3 && check.check4)
   {
     setError(false);
   }
@@ -319,7 +319,7 @@ useEffect( () => {
                 <Grid item xs={12}  >
 
                         <FormControlLabel 
-                            control={<Checkbox  color="secondary" name="check1" checked={check.check1} onChange={(event => checkClicked(event,1))} />}
+                            control={<Checkbox  color="primary" name="check1" checked={check.check1} onChange={(event => checkClicked(event,1))} />}
                             label={<span style={{ fontSize: '1rem' }}>{`I do not have a fever`} 
                             </span>}
                         />
@@ -328,7 +328,7 @@ useEffect( () => {
                 <Grid item xs={12}  >
 
                         <FormControlLabel
-                                    control={<Checkbox color="secondary" name="check2"checked={check.check2} onChange={(event => checkClicked(event,2))} />}
+                                    control={<Checkbox color="primary" name="check2"checked={check.check2} onChange={(event => checkClicked(event,2))} />}
                                     label={<span style={{ fontSize: '1rem' }}>{`I do not have a new, continuous cough`} 
                                     </span>}
                                 />
@@ -337,7 +337,7 @@ useEffect( () => {
                 <Grid item xs={12}  >
 
                     <FormControlLabel
-                                control={<Checkbox color="secondary" name="check3" checked={check.check3} onChange={(event => checkClicked(event,3))} />}
+                                control={<Checkbox color="primary" name="check3" checked={check.check3} onChange={(event => checkClicked(event,3))} />}
                                 label={<span style={{ fontSize: '1rem' }}>{`I do not have shortness of breath`} 
                                 </span>}
                             />
@@ -347,20 +347,20 @@ useEffect( () => {
                 <Grid item xs={12}  >
 
                     <FormControlLabel style={{ fontSize: '1rem', textAlign:"justify" }}
-                                control={<Checkbox color="secondary" name="check4" checked={check.check4} onChange={(event => checkClicked(event,4))}  />}
+                                control={<Checkbox color="primary" name="check4" checked={check.check4} onChange={(event => checkClicked(event,4))}  />}
                                 label={<span style={{ fontSize: '1rem', textAlign:"left" }}>{`I have not been in contact with someone suspected or known to have coronavirus`} 
                                 </span>}
                             />
                     </Grid>
 
-                    <Grid item xs={12}  >
+                    {/* <Grid item xs={12}  >
 
                         <FormControlLabel style={{ fontSize: '1rem', textAlign:"justify" }}
                                     control={<Checkbox color="secondary" name="check5" checked={check.check5} onChange={(event => checkClicked(event,5))}  />}
                                     label={<span style={{ fontSize: '1rem', textAlign:"left" }}>{`I confirm that this appointment is for a Fit to Fly PCR Test, not for the Test to Release scheme.`} 
                                     </span>}
                                 />
-                        </Grid>
+                        </Grid> */}
 
                 </Grid>
 
@@ -440,11 +440,17 @@ useEffect( () => {
                             tabIndex={-1}
                           >
                             <div style={{textAlign:"justify", padding:"10px"}}>
-                              Medical Express Clinic will not contact you for any other reason than to share your test results, and certificate if selected, via the email address provided. The information provided to us via this registration form is never shared with any other organisations, except when this is required by law. 
-
-                                Information provided will never be used for marketing purposes, you cannot opt in.
-
-                                In the case of a positive swab result, our doctor will call on the telephone number provided to inform you of your result and provide additional advice or guidance.
+                            Medical Express Clinic will not contact you for any other reason
+                than to share your test results, and certificate if selected,
+                via the email address provided. The information provided to us
+                via this registration form is never shared with any other
+                organisations, except when this is required by law. Information
+                provided will never be used for marketing purposes, you cannot
+                opt in. In the case of a notable health result, our doctor will
+                call on the telephone number provided to inform you of your
+                result and provide additional advice or guidance. If we cannot
+                get hold of you, we will email you asking you to contact the
+                clinic.
                           </div>
                           </DialogContentText>
                         </DialogContent>
