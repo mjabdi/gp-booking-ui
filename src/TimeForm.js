@@ -143,13 +143,13 @@ export default function TimeForm() {
         // }
 
     
-        if (beforeFeb())
-        {
-          timeSlotsTmp.forEach(time =>
-            {
-              time.available = false;
-            });
-        }
+        // if (beforeFeb())
+        // {
+        //   timeSlotsTmp.forEach(time =>
+        //     {
+        //       time.available = false;
+        //     });
+        // }
 
         setTimeSlots(timeSlotsTmp);
         setDataLoaded(true);
