@@ -132,6 +132,11 @@ export default function InformationForm() {
     }
   };
 
+  const smsPushClicked = (event) =>
+  {
+    setState(state=>({...state,smsPush: event.target.checked}))
+  }
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom className={classes.pageTitle}>
@@ -222,6 +227,20 @@ export default function InformationForm() {
             variant="outlined"
           />
         </Grid>
+
+        <Grid item xs={12} >
+          <div style={{ textAlign: "left", fontWeight: "500", fontSize: "0.9rem", padding: "10px", border: "1px solid #999", borderRadius: "8px", lineHeight: "1.5rem", backgroundColor: "#fafafa", marginTop: "0px" }}>
+            <FormControlLabel style={{ textAlign: "justify" }}
+              control={<Checkbox color="primary" name="check1" checked={state.smsPush} onChange={(event => smsPushClicked(event))} />}
+              label={<span style={{ fontSize: '0.9rem', fontWeight: "500", color: state.check_nogp_error ? "red" : "#555" }}>
+                {
+                  `Please send me sms notifications (optional)`
+                }
+              </span>}
+            />
+          </div>
+        </Grid>
+
       </Grid>
     </React.Fragment>
   );

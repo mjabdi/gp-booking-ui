@@ -263,6 +263,7 @@ export default function Checkout() {
           email: state.email,
           phone: state.phone,
           notes: state.notes,
+          smsPush: state.smsPush
         };
     
         const promise = BookService.bookAppointment({...personInfo, bookingDate:  dateformat(new Date(state.bookingDate.toUTCString().slice(0, -4)),'yyyy-mm-dd'), bookingTime: state.bookingTime, bookingRef: ref, referrer: referrer });
@@ -336,7 +337,7 @@ export default function Checkout() {
         >
 
 
-            <Grid item item xs={10}>
+            <Grid item  xs={10}>
                   <Typography  style={{fontWeight: "400"}} variant="h6" color="inherit" noWrap>
                     Medical Express Clinic
                   </Typography>
