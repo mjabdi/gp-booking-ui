@@ -263,7 +263,9 @@ export default function Checkout() {
           email: state.email,
           phone: state.phone,
           notes: state.notes,
-          smsPush: state.smsPush
+          smsPush: state.smsPush,
+          birthDate: state.birthDate,
+          gender: state.gender
         };
     
         const promise = BookService.bookAppointment({...personInfo, bookingDate:  dateformat(new Date(state.bookingDate.toUTCString().slice(0, -4)),'yyyy-mm-dd'), bookingTime: state.bookingTime, bookingRef: ref, referrer: referrer });
