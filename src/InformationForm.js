@@ -238,7 +238,7 @@ export default function InformationForm() {
 
         <Grid item xs={12} md={12}>
           <FormControl required fullWidth>
-            <InputLabel id="gender-label">Gender</InputLabel>
+            <InputLabel id="gender-label">Sex</InputLabel>
             <Select
               error={state.genderError ? true : false}
               required
