@@ -23,10 +23,11 @@ import AirplanemodeActiveIcon from '@material-ui/icons/AirplanemodeActive';
 import { Grid } from '@material-ui/core';
 
 import logoImage from './images/logo.png';
-import doctorImage from './images/doctor.png';
 
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import faq from './FAQ';
+
+import gynaeImage from './images/gynae-clinic.png'
 
 
 function Copyright() {
@@ -74,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(2),
       marginBottom: theme.spacing(2),
-      padding: theme.spacing(2),
+      padding: theme.spacing(3),
     },
   },
   stepper: {
@@ -104,36 +105,36 @@ const useStyles = makeStyles((theme) => ({
     width: "40px",
     height: "40px",
     marginLeft: "0px",
-  },
-
-  doctorImage: {
-    width: "40px",
-    height: "40px",
-    marginRight: "10px",
+    
   },
 
   privacyButton: {
     marginBottom : "20px",
-    width: "115px"
+    width: "115px",
+    color:"#fff",
+    backgroundColor : "#444",
+    "&:hover": {
+      background: "#000",
+      color: "#fff"
+    },
   },
 
   faqButton: {
     marginBottom : "20px",
     marginLeft : "10px",
-    // backgroundColor : "#2f942e",
-    // "&:hover": {
-    //   background: "green",
-    //   color: "#fff"
-    // },
-    textDecoration : "none !important",
-    width: "115px"
-
+    backgroundColor : "#444",
+    "&:hover": {
+      background: "#000",
+      color: "#fff"
+    },
+    width: "115px",
+    color:"#fff"
   },
 
   textContent : {
       color : "#666f77",
       fontSize : "1.1rem",
-      textAlign: "left",
+      textAlign: "justify",
       paddingLeft: "30px",
       paddingRight: "30px",
       lineHeight: "2.2em",
@@ -143,10 +144,10 @@ const useStyles = makeStyles((theme) => ({
   textContentMobile : {
     color : "#666f77",
     fontSize : "0.9rem",
-    textAlign: "left",
+    textAlign: "justify",
     paddingLeft: "30px",
     paddingRight: "30px",
-    lineHeight: "2.2em",
+    lineHeight: "1.5rem",
     fontWeight : "400"
 },
 
@@ -160,10 +161,8 @@ const useStyles = makeStyles((theme) => ({
       marginRight : "10px",
       fontSize: "32px"
   },
+  gynaeLogo:{
 
-  pageTitle:{
-    color : theme.palette.primary.main,
-    marginTop : "10px"
   }
 
 }));
@@ -230,7 +229,7 @@ export default function WelcomeForm() {
 
 
 const getStartedClicked = (event) => {
-    setState(state => ({...state, getStarted: true}));
+    setState(state => ({...state, getStarted: true, agreed: true}));
 }
 
   return (
@@ -268,15 +267,32 @@ const getStartedClicked = (event) => {
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-         
           {state.firstname && state.firstname.length > 0 && (
-            <div style={{textAlign:'center', fontSize:"1rem", marginBottom:"10px", color:"#777",backgroundColor:"#f7fbff",padding:"20px"}}>
-                Welcome back <span style={{fontWeight:"500", color:"#333", fontStyle:"italic"}}>{state.firstname}</span>
+            <div
+              style={{
+                textAlign: "center",
+                fontSize: "1rem",
+                marginBottom: "10px",
+                color: "#777",
+                backgroundColor: "#f7fbff",
+                padding: "20px",
+              }}
+            >
+              Welcome back{" "}
+              <span
+                style={{
+                  fontWeight: "500",
+                  color: "#333",
+                  fontStyle: "italic",
+                }}
+              >
+                {state.firstname}
+              </span>
             </div>
           )}
 
           <Typography
-            style={{ fontWeight: 700, marginBottom: "50px" }}
+            style={{ fontWeight: 700, marginBottom: "20px" }}
             component="h1"
             variant="h6"
             align="center"
@@ -288,16 +304,11 @@ const getStartedClicked = (event) => {
                 justifyContent: "center",
               }}
             >
-
               <img
-                className={classes.doctorImage}
-                src={doctorImage}
-                alt="doctor image"
+                className={classes.gynaeLogo}
+                src={gynaeImage}
+                alt="logo image"
               />
-              
-              <span className={classes.pageTitle}> 
-                  Private GP in London - £150
-              </span>
             </div>
           </Typography>
 
@@ -306,7 +317,7 @@ const getStartedClicked = (event) => {
               isMobile ? classes.textContentMobile : classes.textContent
             }
           >
-            -&nbsp; Flexible appointment for private GP services whenever you need.
+           Gynae Clinic is proud to offer an exceptional level of service that consistently exceeds the expectations of our patients.
           </p>
 
           <p
@@ -314,7 +325,7 @@ const getStartedClicked = (event) => {
               isMobile ? classes.textContentMobile : classes.textContent
             }
           >
-            -&nbsp; Highly Experienced Doctors.
+           Flexible, same-day appointments, a dedicated and talented team of doctors and staff, and the latest treatments set our clinic apart from the rest.
           </p>
 
           <p
@@ -322,25 +333,7 @@ const getStartedClicked = (event) => {
               isMobile ? classes.textContentMobile : classes.textContent
             }
           >
-             -&nbsp; We are open seven days a week.
-          </p>
-
-          <p
-            className={
-              isMobile ? classes.textContentMobile : classes.textContent
-            }
-          >
-             -&nbsp; No card details or payment necessary.
-          </p>
-
-          <p
-            className={
-              isMobile ? classes.textContentMobile : classes.textContent
-            }
-          >
-             -&nbsp; Plans change and you may need to cancel or rearrange your
-            appointment. We take payment for your visit only when you attend the
-            clinic.
+           Our Gynae Clinic is conveniently located on Harley Street, central London to ensure all your gynaecological needs are met quickly, easily, and with minimal disruption to your schedule.
           </p>
 
           <Button
@@ -357,7 +350,7 @@ const getStartedClicked = (event) => {
         <Button
           variant="contained"
           className={classes.privacyButton}
-          color="secondary"
+          color="default"
           startIcon={<HttpsIcon />}
           onClick={handleClickOpen("paper")}
           onTouchTap={handleClickOpen("paper")}
@@ -368,7 +361,7 @@ const getStartedClicked = (event) => {
         <Button
           variant="contained"
           className={classes.faqButton}
-          color="secondary"
+          color="default"
           startIcon={<LiveHelpIcon />}
           onClick={handleClickOpenFAQ("paper")}
           onTouchTap={handleClickOpenFAQ("paper")}
@@ -443,7 +436,7 @@ const getStartedClicked = (event) => {
                   <React.Fragment>
                     <p
                       style={{
-                        borderLeft: "4px solid red",
+                        borderLeft: "4px solid #f280c4",
                         background: "#eee",
                         fontWeight: "600",
                         paddingLeft: "10px",
@@ -451,7 +444,7 @@ const getStartedClicked = (event) => {
                         lineHeight: "30px",
                       }}
                     >
-                      <span style={{ color: "red", fontSize: "24px" }}>
+                      <span style={{ color: "#f280c4", fontSize: "24px" }}>
                         {" "}
                         Q.{" "}
                       </span>

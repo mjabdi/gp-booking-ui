@@ -30,7 +30,6 @@ import { FormatDateFromString } from "./DateFormatter";
 
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 import BookService from "./services/BookService";
-import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles((theme) => ({
   box: {
@@ -49,11 +48,10 @@ const useStyles = makeStyles((theme) => ({
     border: `1px solid #ddd`,
     borderRadius: "5px",
     color: "#333",
-    padding: "30px 20px 0px 20px",
+    padding: "30px 0px 0px 20px",
     textAlign: "justify",
     marginTop: "20px",
     position: "relative",
-   
   },
 
   boxTitle: {
@@ -208,123 +206,124 @@ export default function ReviewForm() {
       <Typography variant="h6" gutterBottom className={classes.pageTitle}>
         Review Your Data
       </Typography>
-
-      <Fade down>
-      <div>
-        <Alert
-          severity="info"
-          style={{
-            marginBottom: "15px",
-            fontSize: "0.95rem",
-            lineHeight: "1.5rem",
-            textAlign: "justify",
-          }}
+  
+       <Grid
+          container
+          direction="column"
+          spacing={1}
+          justify="flex-start"
+          alignItems="stretch"
         >
-          You can always change or cancel your appointment up-to 24 hours to your appointment with ease through your patient portal
-        </Alert>
-      </div>
-      </Fade>
+          <Fade up>
+            <div className={classes.boxTime}>
+              <div className={classes.boxTitle}>Appoinment Info</div>
+
+              <Grid item xs={12} md={12}>
+                <div>
+                  <ul className={classes.ul}>
+                    <li className={classes.li}>
+                      <span className={classes.infoTitleTime}>
+                        <FontAwesomeIcon
+                          icon={faCalendarAlt}
+                          className={classes.icon}
+                        />
+                        Date:
+                      </span>
+
+                      <span className={classes.infoDataTime}>
+                        {dateformat(
+                          new Date(
+                            state.bookingDate.toUTCString().slice(0, -4)
+                          ),
+                          "dddd, mmmm dS, yyyy"
+                        )}
+                      </span>
+                    </li>
+                    <li className={classes.li}>
+                      <span className={classes.infoTitleTime}>
+                        <FontAwesomeIcon
+                          icon={faClock}
+                          className={classes.icon}
+                        />
+                        Time:
+                      </span>
+                      <span className={classes.infoDataTime}>
+                        {state.bookingTime}
+                      </span>
+                    </li>
+                    <li className={classes.li}>
+                      <span className={classes.infoTitleTime}>
+                        <FontAwesomeIcon
+                          icon={faHourglassHalf}
+                          className={classes.icon}
+                        />
+                        Duration:
+                      </span>
+                      Up-to 30 minutes
+                    </li>
+
+                    {/* <li className={classes.li}>
+                      <span className={classes.infoTitleTime}>
+                        <FontAwesomeIcon
+                          icon={faNotesMedical}
+                          className={classes.icon}
+                        />
+                        Package Price:
+                      </span>
+                      <span style={{dispaly:"inline-block", color:`#e028ed`, fontWeight:"500"}}>{ state.packagePrice ? `${state.packagePrice}` : "-"} </span>
+                    </li> */}
 
 
-      <Grid
-        container
-        direction="column"
-        spacing={1}
-        justify="flex-start"
-        alignItems="stretch"
-      >
-        <Fade up>
-          <div className={classes.boxTime}>
-            <div className={classes.boxTitle}>Appoinment Info</div>
 
-            <Grid item xs={12} md={12}>
-              <div>
-                <ul className={classes.ul}>
-                  <li className={classes.li}>
-                    <span className={classes.infoTitleTime}>
-                      <FontAwesomeIcon
-                        icon={faCalendarAlt}
-                        className={classes.icon}
-                      />
-                      Date:
-                    </span>
+                    <li className={classes.li}>
+                      <span className={classes.infoTitleTime}>
+                        <FontAwesomeIcon
+                          icon={faPoundSign}
+                          className={classes.icon}
+                        />
+                        Deposit:
+                      </span>
+                      <span className={classes.infoDataPrice}> £120.00 </span>
+                    </li>
+                  </ul>
+                </div>
+              </Grid>
+            </div>
+          </Fade>
 
-                    <span className={classes.infoDataTime}>
-                      {dateformat(
-                        new Date(state.bookingDate.toUTCString().slice(0, -4)),
-                        "dddd, mmmm dS, yyyy"
-                      )}
-                    </span>
-                  </li>
-                  <li className={classes.li}>
-                    <span className={classes.infoTitleTime}>
-                      <FontAwesomeIcon
-                        icon={faClock}
-                        className={classes.icon}
-                      />
-                      Time:
-                    </span>
-                    <span className={classes.infoDataTime}>
-                      {state.bookingTime}
-                    </span>
-                  </li>
-                  <li className={classes.li}>
-                    <span className={classes.infoTitleTime}>
-                      <FontAwesomeIcon
-                        icon={faHourglassHalf}
-                        className={classes.icon}
-                      />
-                      Check-up Duration:
-                    </span>
-                    Up-to 30 minutes
-                  </li>
+          <Fade up>
+            <div className={classes.box}>
+              <div className={classes.boxTitle}>Your Info</div>
 
-                  <li className={classes.li}>
-                    <span className={classes.infoTitleTime}>
-                      <FontAwesomeIcon
-                        icon={faNotesMedical}
-                        className={classes.icon}
-                      />
-                      Package:
-                    </span>
-                    <span className={classes.infoData}> {"Private GP"} </span>
-                  </li>
-                </ul>
-              </div>
-            </Grid>
-          </div>
-        </Fade>
+              <Grid item xs={12} md={12}>
+                <div>
+                  <ul className={classes.ul}>
+                    <li className={classes.li}>
+                      <span className={classes.infoTitle}>Full Name</span>
+                      <span className={classes.infoData}>
+                        {" "}
+                        {state.fullname}{" "}
+                      </span>
+                    </li>
+                    <li className={classes.li}>
+                      <span className={classes.infoTitle}>Telephone</span>
+                      <span className={classes.infoData}> {state.phone} </span>
+                    </li>
+                    <li className={classes.li}>
+                      <span className={classes.infoTitle}>Email Address</span>
+                      <span className={classes.infoData}> {state.email} </span>
+                    </li>
 
-        <Fade up>
-          <div className={classes.box}>
-            <div className={classes.boxTitle}>Your Info</div>
-
-            <Grid item xs={12} md={12}>
-              <div>
-                <ul className={classes.ul}>
-                  <li className={classes.li}>
-                    <span className={classes.infoTitle}>Full Name</span>
-                    <span className={classes.infoData}> {state.fullname} </span>
-                  </li>
-                  <li className={classes.li}>
-                    <span className={classes.infoTitle}>Telephone</span>
-                    <span className={classes.infoData}> {state.phone} </span>
-                  </li>
-                  <li className={classes.li}>
-                    <span className={classes.infoTitle}>Email Address</span>
-                    <span className={classes.infoData}> {state.email} </span>
-                  </li>
-
-                  <li className={classes.li}>
-                    <span className={classes.infoTitle}>Notes</span>
-                    <span className={classes.infoData}> {state.notes} </span>
-                  </li>
-                </ul>
-              </div>
-            </Grid>
-          </div>
-        </Fade>
-        <div className={classes.terms}>
+                    <li className={classes.li}>
+                      <span className={classes.infoTitle}>Notes</span>
+                      <span className={classes.infoData}> {state.notes} </span>
+                    </li>
+                  </ul>
+                </div>
+              </Grid>
+            </div>
+          </Fade>
+          <div className={classes.terms}>
           By clicking on the "SUBMIT" button you are agreeing with our{" "}
           <a
             className={classes.link}
@@ -345,14 +344,15 @@ export default function ReviewForm() {
           </a>
         </div>
 
-        {/* <div style={{textAlign:"left", color: "#111", marginLeft:"10px"}}>
+          {/* <div style={{textAlign:"left", color: "#111", marginLeft:"10px"}}>
 <FormControlLabel className={classes.formControl}  style={ {color: state.dataConfirmedError ? "red" : ''}} 
     control={<Checkbox className={classes.formControl} style={ {color: state.dataConfirmedError ? "red" : ''}} 
      color="secondary" name="emailConfirmCheckBox" checked={state.dataConfirmed} onChange={dataConfirmedChanged} />}
      label={<span style={{ fontSize: '0.9rem' , fontWeight:"500"}}>{`I confirm that the details in this form are correct, and I am happy for them to appear as written above on my results and certificate if ordered.`} </span>}
      />
 </div> */}
-      </Grid>
+        </Grid>
+  
     </React.Fragment>
   );
 }

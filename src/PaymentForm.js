@@ -12,7 +12,7 @@ import { Grid } from "@material-ui/core";
 import PaymentService from "./services/PaymentService";
 
 
-const SANDBOX = true
+const SANDBOX = false
 
 const LIVE_APPLICATION_ID = "sq0idp-8-tRTRJuDMDeTBHxJq02xg";  // Live
 const LIVE_LOCATION_ID = "L2SBNYPV0XWVJ";                     //Live   
@@ -63,7 +63,7 @@ export default class PaymentForm extends React.Component {
 
   createVerificationDetails() {
     return {
-      amount: "100.00",
+      amount: "120.00",
       currencyCode: "GBP",
       intent: "CHARGE",
       billingContact: {
@@ -104,7 +104,7 @@ export default class PaymentForm extends React.Component {
                 </div>
               </fieldset>
 
-              <CreditCardSubmitButton>Pay £100.00</CreditCardSubmitButton>
+              <CreditCardSubmitButton>Pay £120.00</CreditCardSubmitButton>
 
             </SquarePaymentForm>
           </Grid>

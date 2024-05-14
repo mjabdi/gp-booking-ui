@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import GlobalState from "./GlobalState";
-import PaymentForm from "./PaymentForm";
+import PaymentForm from "./PaymentFormNew";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import dateformat from "dateformat";
 import { Backdrop } from "@material-ui/core";
@@ -66,7 +66,7 @@ export default function PayForm() {
     window.scrollTo(0, 0);
 
     let sqPaymentScript = document.createElement("script");
-    sqPaymentScript.src = "https://js.squareup.com/v2/paymentform";
+    sqPaymentScript.src = "https://web.squarecdn.com/v1/square.js";
     sqPaymentScript.type = "text/javascript";
     sqPaymentScript.async = false;
     sqPaymentScript.onload = () => {
@@ -96,6 +96,8 @@ export default function PayForm() {
       bookingTime: state.bookingTime,
       bookingRef: state.bookingRef,
       referrer: referrer,
+      smsPush: state.smsPush,
+      birthDate: state.birthDate
     };
 
     setPersonInfo(_personInfo);
@@ -136,15 +138,15 @@ export default function PayForm() {
 
       {personInfo && (
         <div hidden={!loaded}>
-
+{/* 
           <div>
 
             <Alert severity="info" style={{marginBottom:"15px", fontSize:"0.95rem" ,lineHeight:"1.5rem", textAlign:"justify"}}>
-            This is the deposit to secure your appointment, you can cancel anytime up-to 48 hours of your appointment.
+            This is the deposit to secure your appointment, you can cancel anytime up-to 24 hours of your appointment.
 
             </Alert>
 
-          </div>
+          </div> */}
 
           <div className={classes.boxTime}>
           <div className={classes.boxTitle}>Card Info</div>

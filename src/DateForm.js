@@ -17,7 +17,8 @@ import Grid from '@material-ui/core/Grid';
 import Skeleton from '@material-ui/lab/Skeleton';
 
 
-import { format, addMinutes } from 'date-fns';
+import { format, addMinutes, isWeekend, getDay } from 'date-fns';
+
 
 import { enGB, } from 'date-fns/locale'
 
@@ -40,6 +41,8 @@ class UTCUtils extends DateFnsUtils {
   //   return dateformat(date, 'd');
   // }
 
+
+
 }
 
 
@@ -49,10 +52,9 @@ const useStyles = makeStyles((theme) => ({
     
   },
 
-  title: {
+  pageTitle:{
     color : theme.palette.primary.main,
-    marginBottom: "20px",
-    fontWeight: "500"
+    marginBottom: "15px"
   }
 
 }));
@@ -132,6 +134,7 @@ export default function DateForm() {
   const checkFullyBooked = (date) =>
   {
     var result = false;
+    // console.log(getDay(date))
 
     if (dateformat(date,'yyyy-mm-dd') < dateformat(firstAvailableDay,'yyyy-mm-dd'))
     {
@@ -160,7 +163,7 @@ export default function DateForm() {
 
     <React.Fragment>
                
-                <Typography variant="h6" gutterBottom className={classes.title}>
+                <Typography variant="h6" gutterBottom className={classes.pageTitle}>
                     Pick a Date
                 </Typography>
 

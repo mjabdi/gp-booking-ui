@@ -15,7 +15,7 @@ import TimeForm from './TimeForm';
 import InformationForm from './InformationForm';
 import ReviewForm from './ReviewForm';
 import GlobalState from './GlobalState';
-import AddressForm from './AddressForm';
+// import AddressForm from './AddressForm';
 import BookService from './services/BookService';
 
 import Dialog from '@material-ui/core/Dialog';
@@ -293,7 +293,7 @@ useEffect( () => {
         >
 
 
-            <Grid item item xs={10}>
+            <Grid item xs={10}>
                   <Typography  style={{fontWeight: "400"}} variant="h6" color="inherit" noWrap>
                     Medical Express Clinic
                   </Typography>
