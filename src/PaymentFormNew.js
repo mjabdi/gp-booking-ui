@@ -80,7 +80,7 @@ export default class PaymentFormNew extends React.Component {
 
   createVerificationDetails() {
     return {
-      amount: "120.00",
+      amount: "125.00",
       currencyCode: "GBP",
       intent: "CHARGE",
       billingContact: {
@@ -116,7 +116,7 @@ export default class PaymentFormNew extends React.Component {
             },
           }}
           >
-              <span style={{fontWeight:"600", fontSize:"1.2em"}}>Pay £120</span>
+              <span style={{fontWeight:"600", fontSize:"1.2em"}}>Pay £125</span>
            </CreditCard>
         </div>
       </PaymentForm>

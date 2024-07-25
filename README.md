@@ -1,1 +1,1 @@
-## paediatrician BOOKING UI
+## Paediatric GP BOOKING UI
